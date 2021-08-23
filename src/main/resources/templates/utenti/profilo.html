@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/prenotazionestyle.css}">
+    
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+	
+	<div class="conferma-elimina">
+		<div class="filter"></div>
+		<div class="popup">
+			<a class="esc"><i class="fas fa-times"></i></a>
+			<span class="popup-text">Sei sicuro di voler eliminare l'account?</span>
+			<div class="elimina-utente-btn">
+				<a class="conferma-elimina-utente-si grow" th:href="@{/utenti/eliminaUtente(id=${utenteInSessione.id})}"><span>SI</span></a>
+				<a class="grow" th:href="@{/utenti/profilo}"><span>NO</span></a>
+			</div>
+			
+		</div>
+	</div>
+
+
+	<section class="profilo">
+		<div class="info-profilo">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 col-sm-12 nome">
+						<span th:text="${utenteInSessione.nome}"></span> <span
+							th:text="${utenteInSessione.cognome}"></span>
+					</div>
+					<div class="col-lg-5 col-sm-12 bottoni">
+						<a th:href="@{/utenti/modificaForm(id=${utenteInSessione.id})}" class="modifica">MODIFICA</a>
+						 <a id="elimina-utente-btn" class="elimina"><span>ELIMINA</span></a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="info-prenotazioni-utente" sec:authorize="hasRole('GENERICO')">
+						<h4>Le tue prenotazioni</h4>
+						<div class="col-12 singola-prenotazione" th:each="p : ${utenteInSessione.prenotazioni}">
+							<div class="data-orario">
+								<span class="tipologia-prenotazione" th:text=" ${p.tipologiaPrenotazione}"></span>
+								<span class="data-prenotazione" th:text="${#temporals.format(p.data, 'dd-MM-yyyy')}">${p.data}</span>
+								<span> - </span>
+								<span th:text="${p.ora}"></span>
+							</div>
+							<div class="bottoni">
+								<a th:href="@{/prenotazioni/dettagli-prenotazione(id=${p.id})}" class="dettagli-prenotazione"><span>DETTAGLI</span></a>
+								<a class="modifica-prenotazione modifica" th:href="@{/prenotazioni/modifica-tavolo-form(id=${p.id})}"><span>MODIFICA</span></a>
+								<a class="elimina-prenotazione elimina" id="elimina-prenotazione-btn" th:href="@{/prenotazioni/elimina-prenotazione(id=${p.id})}"><span>ELIMINA</span></a>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div th:insert="footer"></div>

@@ -1,0 +1,166 @@
+@import url('http://fonts.cdnfonts.com/css/brittany-signature');
+
+.dettagli-singola-prenotazione{
+	max-height: 80% !important;
+	margin-top: 10%;
+}
+
+.conferma-prenotazione{
+	
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	font-family: var(--mainFont);
+}
+
+
+.firme{
+	display: flex;
+	flex-flow: column;
+	width: 40%;
+	align-items: flex-end;
+	font-family: 'Brittany Signature', sans-serif;
+
+	
+}
+
+.riepilogo-prenotazione{
+	margin-bottom: 50px;
+	display: flex;
+	flex-flow: column;
+}
+
+.riepilogo-prenotazione img{
+	display: block;
+	margin: 0 auto;
+	width: 250px;
+	height: 250px;
+}
+
+.riepilogo-prenotazione span{
+	font-size: 30px;
+}
+
+.data-orario.riepilogo{
+	width: 100vw;
+	padding: 0 30%;
+	flex-flow: column ;
+	font-size: 20px;
+	
+}
+
+.riepilogo>div{
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+.riepilogo>div:nth-child(5){
+	flex-flow:column;
+}
+
+.riepilogo>div>label{
+	color: var(--gold);
+}
+
+.riepilogo-prenotazione.singola{
+	align-items: center;
+}
+
+.riepilogo-prenotazione span{
+	font-size: 20px;
+}
+
+.singola .bottoni a{
+	padding: 5px 10px;
+	cursor: pointer;
+	border: 1px solid var(--gold);
+	
+}
+
+ .filter{
+	 	position: absolute;
+	 	top: 0;
+	 	left: 0;
+		width: 100%;
+		height: 100%;	
+		z-index: 4;
+}
+
+@media(max-width: 1200px){
+	.nome-colonna{
+		font-size: 1rem !important;
+	}
+	
+}
+
+
+/*ASPORTO*/
+
+.menu-main-asporto{
+font-family: 'Roboto';
+}
+
+.form-asporto li a:hover{
+	color: var(--gold);
+	
+}
+
+.carrello{
+	position: relative;
+	min-height: 100px;
+	height: fit-content;
+}
+
+.carrello h4{
+	padding: 15px 0;
+	border-bottom: 2px solid black;
+}
+
+.prodotti-carrello{
+	
+	font-family: 'Roboto';
+}
+
+.riepilogo-carrello{
+	width: 100%;
+	position: relative;
+	left: 0;
+	bottom: 0;
+	border: 1px solid black;
+	background-color: #e10000;
+	height: 30px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+}
+
+.riepilogo-carrello span{
+	color: white;
+	font-size: 13px;
+	letter-spacing: 2px;
+	
+}
+
+/*DETTAGLI PRENOTAZIONE ASPORTO*/
+.prodotti-ordinati li{
+	display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.prodotti-ordinati li img{
+	
+	display: block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+}

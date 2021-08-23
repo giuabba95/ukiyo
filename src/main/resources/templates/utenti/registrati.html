@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+    <!-- HEADER -->
+    <section class="static-intro" >
+    
+        	<div class="filter"></div>
+            <img th:src="@{/resources/restaurant.jpg}">
+    </section>
+
+    <!-- NAVBAR -->
+
+
+    
+	<section class="form">
+		<h1> REGISTRATI A UKAIYO</h1>
+		<p>
+			Registrandoti avrai la possibilità di prenotare un tavolo presso il nostro locale oppure ordinare una gustosa cena da
+			ritirare in sede.
+		</p>
+	    <form th:action="@{/utenti/aggiungi}" id="form" class="form__registrazione mt-5" th:object="${utente}" method="post">
+	       
+	            <div class="form-row">
+	              <div class="col-lg-6 col-md-6 col-sm-12 ">
+	                  <label for="name">Nome*</label>
+	                <input name="name" type="text" class="form-control mb-2" placeholder="Nome" th:field="*{nome}">
+	              </div>
+	              <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+	                <label for="lastname">Cognome*</label>
+	                <input name="lastname" type="text" class="form-control mb-2" placeholder="Cognome" th:field="*{cognome}">
+	              </div>
+	            </div>
+	            <div class="form-row">
+	                <div class="col-12 mb-2">
+	                    <label for="email">Email*</label>
+	                  <input name="email" type="email" class="form-control mb-2" placeholder="Email" th:field="*{email}">
+	                  <label class="error email-error" th:text="${errore}"></label>
+	                </div>
+	            </div>
+	            
+	             <div class="form-row">
+	                
+	                <div class='col-12 mb-2'>
+	                    <label for="inputPassword" class="inputPassword">Password*<button type="button" id="button-eye"><i id="eye-icon" class="fas fa-eye"></i></button>
+	                    </label>
+	                  <input name="password" type='password' id="input-password" class="form-control mb-2" placeholder="Password" th:field="*{password}"/>
+	               </div>        
+	            </div>
+	            
+	            <div class="form-row">
+	                <div class="col-12 mb-2">
+	                    <label for="telephone">Telefono*</label>
+	                  <input name="telephone" type="text" class="form-control mb-2" placeholder="Telefono" th:field="*{telefono}">
+	                </div>
+	            </div>
+	            
+	             
+	           
+	            <div class="form-row mt-5">
+	
+				<div class="icon-btn form-control grow">
+					<button type="submit">REGISTRATI</button>
+				</div>
+			</div>
+	
+	          
+	    </form>
+	</section>
+	
+	
+	<div th:insert="footer"></div>

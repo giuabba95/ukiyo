@@ -1,0 +1,135 @@
+<div class="menu">
+	<div th:insert="header"></div>
+</div>
+
+<section class="menu-main-asporto">
+	<div class="container">
+<!--  
+		<div class="row">
+			<div class="col-12">
+				<span></span>
+				<a class="open-filter" >Ricerca un prodotto</a>
+			</div>
+			<div class="col-12 mt-3 filtri-ricerca">
+				<form class="row" method="post" th:action="@{/menu/filtra-pietanze}">
+					<div class="col-lg-3 col-sm-12">
+						<label for="nome">Filtra per nome: </label> <input name="nome"
+							type="text" class="form-control" placeholder="Nome">
+					</div>
+					<div class="col-lg-3 col-sm-12">
+						<label for="prezzo">Ordina per prezzo: </label> 
+							<select name="prezzo">
+								<option>-</option>
+								<option value="ASC">Ordina per prezzo ascendente</option>
+								<option value="DESC">Ordina per prezzo discendente</option>
+							</select>
+					</div>
+					<div class="col-lg-3 col-sm-12">
+						<label for="ruolo">Filtra per categoria: </label> <select
+							name="ruolo" class="form-control">
+							<option selected value="0">-</option>
+							<option th:each="c: ${categorie}" th:text="${c.nome}"
+								th:value="${c.id}">
+						</select>
+					</div>
+					<div class="col-lg-3 col-sm-12 filtri-bottoni">
+						<div class="row">
+							<div class="col-3">
+								<button class="icon-btn grow form-control btn-filtro" name="btn-filtro"
+									type="submit" value="cerca">CERCA</button>
+							</div>
+							<div class="col-9">
+								<a th:href="@{/utenti/recupera-tutti}"
+									class="icon-btn grow form-control" name="btn-filtro"
+									value="visualizza-tutti">VISUALIZZA TUTTI</a>
+							</div>
+						</div>
+
+					</div>
+
+				</form>
+			</div>
+		</div>
+		
+-->
+
+		
+		
+		<div class="row mt-3">
+			<div class="col-2">
+				<ul class="categorie">
+					<li th:each="c : ${categorie}"><a
+						th:href="@{/pietanze/recupera(id=${c.id})}"> <span
+							th:text="${c.nome}"></span>
+						</a> 
+					</li>
+				</ul>
+			</div>
+			<div class="col-7">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6" th:each="p : ${menu}">
+						<div class="prodotto">
+							<div class="filter">
+								<a th:href="@{/pietanze/recupera(id=${p.id})}"><i
+									class="fas fa-search "></i></a>
+							</div>
+							<div class="immagine">
+								<img th:src="@{${p.percorsoImmagine}}">
+							</div>
+								<span class="nome" th:text="${p.nome}" style="z-index: 1000000; cursor: pointer"></span>
+								<div class="prodotto-id" style="display: none" th:text="${p.id}"></div>
+							<div>
+								
+								 <span class="numPezzi"
+									th:text="${p.numeroPezzi} + ' pz'"></span>
+								<span> - €</span>	
+								<span class="prezzo"
+									th:text="${p.prezzo}"></span>
+								
+									
+								
+							</div>
+							
+							
+													
+							
+							<!--  <div class="prezzo-box">
+						<span th:text="${p.prezzo}" class="prezzo"></span>
+						<span>€</span>
+					
+					</div>
+					-->
+						</div>
+					</div>
+				</div>								
+			</div>
+			<div class="col-3 carrello" style="border: 1px solid black">
+				<h4>Carrello: </h4>
+				<form class="prodotti-carrello" method="post" th:action="@{/prenotazioni/concludiAsporto}" th:object="${prenotazioniAsporto}">
+					<div class="">
+						<label th:text="${prenotazioniAsporto.data}"></label>
+						<input type="hidden" th:field="*{data}" name="data" th:value="${prenotazioniAsporto.data}">
+						<label th:text="${prenotazioniAsporto.ora}" ></label>
+						<input type="hidden" name="ora" th:value="${prenotazioniAsporto.ora}" th:field="*{ora}">
+						<input type="hidden" name="messaggio" th:value="${prenotazioniAsporto.messaggio}" th:field="*{messaggio}">
+						
+					</div>
+					<div class="riepilogo-carrello">
+						<div>
+							<span>Totale: €</span>
+							<span class="totale">0</span>
+						</div>
+						<button type="submit">PROCEDI</button>
+					</div>
+				</form>
+				
+			</div>
+			
+		</div>
+	</div>
+
+</section>
+
+
+
+<div th:insert="footer"></div>

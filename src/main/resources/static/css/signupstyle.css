@@ -1,0 +1,361 @@
+/* ----- FORM SECTION STARTS ------ */
+	.static-intro{position: relative; margin-top: 100px; display: flex; justify-content: center;}
+	
+	.static-intro .filter{position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background-color: var(--gold); mix-blend-mode: color-burn; opacity: 0.6}
+	.static-intro img{position: absolute; width: 90%; height: 100%; object-fit: cover; display: inline-block; z-index:0; border-bottom-left-radius: 5%;}
+	.title{z-index: 3; color: var(--black)}
+	.form{width:50%;margin: 2rem auto 2rem auto;}
+	.form a {width: fit-content; margin: 0 auto; color: black; letter-spacing: 2px;}
+	.form a:hover{color: var(--gold); text-decoration: underline;}
+	.form h1{padding:10px; font-family: var(--mainFont); text-align: center; letter-spacing: 5px;}
+	.form p{font-family: var(--mainFont); font-weight: bold;}
+	.form #prenotazione__button{width: fit-content;margin: 0 auto 0 auto;}
+	.form-control{display: flex !important;}
+	.form-control:focus{box-shadow: 0 0 0 0.2rem rgba(213, 200, 151, 0.25); border-color: var(--gold);}
+	#button-eye{border: none; background-color: #fff;}
+	#button-eye:focus{outline: none;}
+	.inputPassword{display: flex; justify-content: space-between;}
+	button{background: none; border: none; color: var(--gold)}
+	button:focus{outline: none !important;}
+	.icon-btn{ width: fit-content; border: 1px solid var(--gold); margin: 0 auto;}
+	.grow { transition: all .2s ease-in-out; }
+	.grow:hover {transform: scale(1.1); }
+	label{font-family: var(--mainFont)}
+	label.error{color: red;}
+	label.email-error{display: none;}
+	
+	.login{
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+	}
+	
+	
+	/*Remove Chrome autocomplete blue color*/
+	/* Change the white to any color */
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover, 
+	input:-webkit-autofill:focus, 
+	input:-webkit-autofill:active
+	{
+	 -webkit-box-shadow: 0 0 0 30px white inset !important;
+	}
+	
+	.menu{
+		position: fixed;
+		width: 100%;
+		top: 0;
+		background: #fff;
+		z-index: 1000;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	
+	.menu + section{
+		margin-top: 10%;
+	}
+	
+	.menu a{
+		text-decoration: none;
+	}
+	
+	.menu a:hover{
+		text-decoration: none;
+	}
+	
+	.menu-title{
+		height: 100%;
+		font-family: var(--mainFont);
+		color: var(--black);
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.menu-title h1{
+		font-family: var(--japaneseFont);
+	}
+	
+	
+	
+	.menu-left, .menu-right{
+		width: 100px;
+	}
+	
+	#menu-icon{
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	#menu-icon i{
+		cursor: pointer;
+	}
+	
+
+	
+	.static-intro-image{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		
+	}
+	
+	.conferma-registrazione{
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+		font-family: var(--mainFont);
+	}
+	
+	.conferma-registrazione p{
+		width: 40%;
+		
+	}
+	
+	.conferma-registrazione-btn-wrapper{
+		display: flex;
+	}
+	
+	.conferma-registrazione-btn{
+		margin-right: 20px;
+	}
+	
+	.conferma-registrazione-btn a, .elimina-utente-btn a{
+		border: 1px solid var(--gold);
+		padding: 5px 10px;
+		letter-spacing: 2px;
+		font-family: var(--mainFont);
+		color: var(--black);
+		text-decoration: none;
+	}
+	
+	 a:hover{
+		color: var(--black);
+		text-decoration: none;
+	}
+	
+	.menu-navbar{
+		width: 100%;
+		display: none;
+		transition: all 1s ease-in;
+	}
+	
+	.active{
+		display: block !important;
+	}
+	
+	.disabled{
+		opacity: 0;
+	}
+	
+	
+	/*CONFERMA ELIMINA */
+	
+	.elimina{
+		cursor: pointer;
+	}
+	
+	.conferma-elimina{
+		display: none;
+	}
+	
+	.conferma-elimina {
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;		
+		display: none;
+		
+
+	}
+	
+	
+	
+	.popup{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		width: 50%;
+		height: 40%;
+		border: 5px solid var(--gold);
+		z-index: 5;
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 5;
+	}
+	
+	.conferma-elimina .popup span{
+		font-family: var(--mainFont);
+	}
+	
+	
+	 .popup .esc{
+		cursor: pointer;
+		color: black;
+		position: absolute;
+		top: 5%;
+		right: 5%;
+	}
+	
+	.elimina-utente-btn{
+		margin-top: 20px;
+		
+	}
+	
+	#elimina-utente-btn{
+		display: block;
+	}
+	
+	.elimina-utente-btn a{
+		display: inline-block;
+		width: 50px;
+		text-align: center;
+		padding: 5px 0;
+		margin-right: 5px;
+	}
+	
+	.data-orario{
+		display: flex;
+		width: 50%;
+		justify-content: space-between;
+	}
+	
+	
+	.tipologia-prenotazione{
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+	
+	/*UTENTI PAGE*/
+	
+	.utenti , .form{
+		margin-top: 10%;
+		font-family: var(--mainFont);
+		
+	}
+	
+	.utenti h1{
+		letter-spacing: 5px;
+		text-align: center;
+	}
+	
+	.utenti-box{
+		border: 1px solid black;
+	}
+	
+	.dettagli-utenti{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 10px;
+	}
+	
+	.dettagli-utenti h5{
+		font-weight: bolder;
+	}
+	
+	.dettagli-utenti:not(:last-child){
+		border-bottom: 1px solid black;
+		
+	}
+	
+	.sezione-ruoli{
+		padding: 0 0 10px 0;
+		display: flex;
+		justify-content: flex-end;
+		align-items: baseline;
+	}
+	
+	.sezione-ruoli>*{
+		margin-right: 10px;
+		
+		margin-bottom: 10px;
+	}
+	
+	.sezione-ruoli span{
+		font-weight: bold;
+	}
+	
+	.sezione-ruoli.bottoni{
+		justify-content: flex-end !important;
+	}
+	
+	.sezione-ruoli .icon-btn{
+		border: 1px solid var(--gold);
+		border-radius: .25em;
+		padding: 5px 10px;
+		margin: 0;
+	}
+	
+	.filtri-ricerca .icon-btn{
+		padding: 5px 10px;
+		height: fit-content;
+	}
+	
+	.filtri-ricerca .filtri-bottoni{
+		display: flex;
+		align-items: flex-end;
+	}
+	
+	.no-users-found{
+		text-align: center;
+		margin-top: 20px;
+		color: red;
+	}
+	
+	.form-modifica-ruolo{
+		margin-top: 20px;
+	}
+	
+	.open-filter{
+		cursor: pointer;
+	}
+	
+	@media(min-width: 0px) and (max-width: 769px){
+		.profilo{
+			min-height: 100vh !important;
+			margin-top: 50px;
+		}
+		
+		.data-orario{
+			flex-flow: column;
+		}
+		
+		.bottoni{
+			justify-content: center !important;
+		}
+		
+		.bottoni a{
+			margin-right: 10px !important;
+		
+		}
+		
+		.menu + section{
+		margin-top: 20%;
+		}
+	}
+	
+	@media(min-width: 992px) and (max-width: 1200px){
+		
+		.filtri-ricerca .icon-btn{
+			padding: 5px 6px !important;
+		}
+	
+	}
+	
+	
+	
+	
+    

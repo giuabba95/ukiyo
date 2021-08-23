@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+	
+	<!-- CONFERMA ELIMINA -->
+
+	<div class="conferma-elimina">
+		<div class="filter"></div>
+		<div class="popup">
+			<a class="esc"><i class="fas fa-times"></i></a> 
+			<span class="popup-text">Sei sicuro di voler eliminare l'account?</span>
+			<div class="elimina-utente-btn">
+				<a class="conferma-elimina-utente-si grow"
+					th:href="@{/utenti/eliminaUtente(id=${utente.id})}"><span>SI</span></a>
+				<a class="grow" th:href="@{/utenti/modificaForm(id=${utente.id})}"><span>NO</span></a>
+			</div>
+
+		</div>
+	</div>
+
+	<section class="form modifica-ruolo">
+		<h1 th:text="${utente.nome} + ' ' + ${utente.cognome}"></h1>
+		<a sec:authorize="hasRole('ADMIN')" id="elimina-utente-btn" class="elimina"><span>ELIMINA</span></a>	
+	    <form th:action="@{/utenti/modificaRuolo}"  class="form-modifica-ruolo" th:object="${utente}" method="post">
+	    
+	    		<input type="hidden" name="id" th:field=*{id}>
+	       
+	            <div class="form-row">
+	              <div class="col-lg-6 col-md-6 col-sm-12 ">
+	                  <label for="name">Nome*</label>
+	                <input readonly name="name" type="text" class="form-control mb-2" placeholder="Nome" th:field="*{nome}" th:value="${utente.nome}" >
+	              </div>
+	              <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+	                <label for="lastname">Cognome*</label>
+	                <input readonly name="lastname" type="text" class="form-control mb-2" placeholder="Cognome" th:field="*{cognome}" th:value="${utente.cognome}">
+	              </div>
+	            </div>
+	            <div class="form-row">
+	                <div class="col-12 mb-2">
+	                    <label for="email">Email*</label>
+	                  <input readonly name="email" type="email" class="form-control mb-2" placeholder="Email" th:field="*{email}" th:value="${utente.email}">
+	                  <label class="error email-error" th:text="${errore}"></label>
+	                </div>
+	            </div>
+	            
+	             
+	            
+	            <div class="form-row">
+	                <div class="col-12 mb-2">
+	                    <label for="telephone">Telefono*</label>
+	                  <input readonly name="telephone" type="text" class="form-control mb-2" placeholder="Telefono" th:field="*{telefono}" th:value="${utente.telefono}">
+	                </div>
+	            </div>
+	            
+	            <div class="form-row role" sec:authorize="hasAnyRole('ADMIN','STAFF')">
+	                <div class="col-12 mb-2">
+	                    <label for="ruolo">Ruolo</label>
+	                    <select class="form-control" th:field="*{ruolo}">
+	                    	<option th:each = "r : ${ruoli}" th:text="${r.descrizione}" th:value="${r.id}" th:selected="${r.id} eq ${utente.ruolo.id}"></option>
+	                    </select>
+	                </div>
+	            </div>
+	            
+	             
+	           
+	            <div class="form-row mt-5">
+	
+				<div class="icon-btn grow form-control">
+					<button type="submit">MODIFICA</button>
+				</div>
+			</div>
+	
+	          
+	    </form>
+	</section>
+	
+	
+	<div th:insert="footer"></div>

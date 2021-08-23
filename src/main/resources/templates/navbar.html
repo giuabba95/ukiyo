@@ -1,0 +1,41 @@
+
+<nav>
+        <div class="row nav">
+            <div class="col-12">
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/pietanze/recupera-tutti}">Menu</a></li>
+                    <li><a href="">Contatti</a></li>
+                    <li sec:authorize="isAnonymous()"><a th:href="@{/login/form}">Accedi</a></li>
+                    <li sec:authorize="hasRole('GENERICO')">
+                    	<div class="dropdown show">
+							<a class="dropdown-toggle" href="#"
+								role="button" id="dropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> Prenota </a>
+	
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" th:href="@{/prenotazioni/prenotaTavolo-form}">Prenota un tavolo</a> 
+								<a class="dropdown-item" th:href="@{/prenotazioni/asporto}">Prenota asporto</a> 
+							</div>
+						</div>
+					</li>
+					<li sec:authorize="hasAnyRole('ADMIN','STAFF')">
+						<div class="dropdown show">
+							<a class="dropdown-toggle" href="#"
+								role="button" id="dropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> Gestisci </a>
+	
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/prenotazioni/recupera-tutte}">Prenotazioni</a> <a
+									class="dropdown-item" th:href="@{/utenti/recupera-tutti}">Utenti</a> <a
+									class="dropdown-item" th:href="@{/pietanze/recupera-tutti}">Menu</a>
+							</div>
+						</div>
+					</li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/utenti/profilo}">Profilo</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+
+			</ul>
+            </div>
+        </div>
+    </nav>

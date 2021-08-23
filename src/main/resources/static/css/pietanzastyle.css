@@ -1,0 +1,263 @@
+.form.aggiungi{
+	margin-top: 10%;
+}
+
+.form.login{
+	max-height: 60vh !important;
+	display: flex;
+	flex-flow: column;
+}
+
+#form img, .menu-main img{
+	display: block;
+	max-width: 300px;
+	max-height: 200px;
+	margin: 0 auto;
+}
+
+
+.anteprima-foto-box{
+	display: none;
+}
+
+.aggiungi{
+	margin-top: 15%;
+	min-height: 100vh;
+}
+
+.aggiungi-categoria{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+.aggiungi-categoria h1{
+	text-align: center;
+	font-family: var(--mainFont);
+}
+
+
+
+#aggiungi-categoria-link{
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#aggiungi-categoria-plus{
+	font-size: 0.75em;
+}
+
+
+
+.aggiungi-categoria .popup{
+	width: 70%;
+	height: 70%;
+}
+
+.aggiungi-categoria .popup>form{
+	display: flex;
+	flex-flow: column;
+	width: 65%;
+}
+
+ .filter{
+	 	position: absolute;
+	 	background-color: black;
+	 	opacity: 0.2;
+	 	top: 0;
+	 	left: 0;
+		width: 100%;
+		height: 100%;	
+	}
+	
+	.form{width:50%;margin: 2rem auto 0 auto;}
+	.form a { margin: 0 auto; color: black; letter-spacing: 2px;}
+	.form a:hover{color: var(--gold); text-decoration: underline;}
+	.form h1{padding:10px; font-family: var(--mainFont); text-align: center; letter-spacing: 5px;}
+	.form p{font-family: var(--mainFont); font-weight: bold;}
+	.form #prenotazione__button{width: fit-content;margin: 0 auto 0 auto;}
+	.form-control{display: flex !important;}
+	.form-control:focus{box-shadow: 0 0 0 0.2rem rgba(213, 200, 151, 0.25); border-color: var(--gold);}
+	#button-eye{border: none; background-color: #fff;}
+	#button-eye:focus{outline: none;}
+	.inputPassword{display: flex; justify-content: space-between;}
+	button{background: none; border: none; color: var(--gold)}
+	button:focus{outline: none !important;}
+	.icon-btn{ width: fit-content; border: 1px solid var(--gold); margin: 0 auto;}
+	.grow { transition: all .2s ease-in-out; }
+	.grow:hover {transform: scale(1.1); }
+	label{font-family: var(--mainFont)}
+	label.error{color: red;}
+	label.email-error{display: none;}
+	.filtri-ricerca .icon-btn{
+		padding: 5px 10px ;
+		height: fit-content;
+	}
+	
+	.filtri-ricerca .filtri-bottoni{
+		display: flex;
+		align-items: flex-end;
+	}
+	
+	.menu-main img{
+		border: none;
+		padding: 0;
+		margin-bottom: 10px;
+		border-radius: 5px;
+	}
+	
+	.prodotto{
+		position: relative;
+		display: flex;
+		flex-flow: column;
+		justify-content: space-between;
+		border-radius: 5px;
+		padding-bottom: 20px;
+		height: 100%;
+	}
+	
+	.prodotto .filter{
+		opacity: 1;
+		display: none;
+		width: 100%;
+		height: 100%;
+		border-radius: 5px;
+		background-color: transparent !important;
+	}
+	
+	.active{
+		display: block !important;
+	}
+	
+	.prodotto .filter a{
+		position: absolute;
+		top: 33%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+		color: white;
+		font-weight: bolder;
+		opacity: 1;
+	}
+	
+	.menu-main{
+		font-family: var(--mainFont);
+		
+	}
+	
+	.menu-main .aggiungi-prodotto{
+		text-align: center;
+		margin: 20px;
+		font-weight: bolder;
+	}
+	
+	
+	
+	.prodotto h4, .prodotto .categoria, .prodotto .prezzo{
+		font-weight: bolder;
+	}
+	
+	.prodotto .immagine img{
+		width: 100%;
+	}
+	
+	.prodotto>.categoria {
+	display: block;
+	width: 100%;
+	}
+	
+	.open-filter{
+		cursor: pointer;
+	}
+	
+	@media(max-width: 737px){
+		.filtri-ricerca .icon-btn{
+			margin-top: 5px;
+		}
+	}
+	
+	
+	@media(min-width: 992px) and (max-width: 1200px){
+		
+		.filtri-ricerca .icon-btn{
+			padding: 5px 6px !important;
+		}
+	
+	}
+	/*PIETANZA PAGE*/
+	
+	.pietanza{
+		height: 80vh;
+	}
+	
+	.pietanza img{
+		width: 100%;
+		padding: 10%;
+	}
+	
+	.immagine-box{
+		border: 1px solid var(--gold);
+		border-radius: 10px;
+	
+	}
+	
+	.dettagli-pietanza{
+		font-family: var(--mainFont);
+		padding: 10%;
+	}
+	
+	.categorie{
+		margin-left: 20px;
+		height: 100%;
+		display: flex;
+		flex-flow: column;
+		position: sticky;
+	}
+	
+	.categorie li{
+		list-style: none;
+		
+		
+		
+	}
+	
+	.categorie li a{
+		display: block;
+		width: 100%;
+	}
+	
+	.categorie li a{
+		padding: 9px 0;
+		color: black;
+		position: relative;
+	}
+	
+	.categorie li a:hover{
+		text-decoration: none;
+	}
+	
+	.categorie li a:after{
+		background: none repeat scroll 0 0 transparent;
+		  bottom: 0;
+		  content: "";
+		  display: block;
+		  height: 2px;  
+		  position: absolute;
+		  background: black;
+		  transition: width 0.8s ease 0s, left 0.3s ease 0s;
+		  width: 0;
+}
+
+	
+	.categorie li a:hover:after{
+		width: 50%;
+		left: 0;
+	}
+	
+	
+	
+	
+	
+

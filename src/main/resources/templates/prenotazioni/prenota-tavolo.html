@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+    <!-- HEADER -->
+    <section class="static-intro" >
+    
+        	<div class="filter"></div>
+            <img th:src="@{/resources/restaurant.jpg}">
+    </section>
+    
+    <section class="form">
+		<form name="prenotazione__form" id="form"
+			th:action="@{/prenotazioni/prenotaTavolo}" method="post"
+			th:object="${prenotazione}">
+
+			<div class="form-group row">
+				<label for="inputDate" class="col-2 col-form-label">Giorno</label>
+				<div class='input-group date col-10' id='datetimepicker3'>
+					<input type='date' class="form-control calendario" id="data"
+						placeholder="gg/mm/aaaa" name="data" th:field="*{data}"
+						style="width: 200px;" />
+					<select name="orario" th:field="*{ora}">
+						<option th:each="o : ${orari}" th:text="${o}" th:value="${o}">
+					</select> 
+					<label class="data-error error" th:text="${errore}"></label>
+
+				</div>
+
+
+
+
+			</div>
+
+			<div class="form-group row">
+				<label for="numOspiti" class="col-sm-2 col-form-label">Numero
+					di ospiti</label>
+
+				<div class='input-group date col-10' id='datetimepicker3'>
+					<input type='number' min=2 max=15 class="form-control" id="data"
+						placeholder="numero di ospiti" name="numOspiti"
+						th:field="*{numeroOspiti}" style="width: 200px;">
+				</div>
+			</div>
+
+				<div class="form-group row">
+					<label for="textArea" class="col-sm-2 col-form-label">Messaggio</label>
+					<div class='input-group date col-sm-10' id='datetimepicker3'>
+						<textarea class="form-control" id="exampleFormControlTextarea1"
+							rows="3" th:field="*{messaggio}"></textarea>
+					</div>
+				</div>
+				
+				<input type="hidden" name="tipologiaPrenotazione" th:value="${tipologiaPrenotazione}">
+				<input type="hidden" name="utente" th:value="${utente.id}">
+
+
+				<div class="form-group row">
+					<label for="Button" class="col-sm-2 col-form-label"></label>
+					<div class='input-group' id="prenotazione__button">
+						<button class="icon-btn grow prenotazione-btn form-control" type="submit">INVIA</button>
+					</div>
+				</div>
+		</form>
+
+	</section>
+	
+<div th:insert="footer"></div>

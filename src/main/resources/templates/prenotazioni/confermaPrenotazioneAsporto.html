@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/prenotazionestyle.css}">
+    
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a id="logo-home" th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+    
+
+	<!-- MESSAGE SECTION -->
+	
+<section class="conferma-registrazione">
+	<div class="conferma-prenotazione">
+		<h1 th:text = "'Ciao, ' + ${prenotazione.utente.nome} + ' ' + ${prenotazione.utente.cognome}"></h1>
+		<p>
+			Grazie per aver prenotato presso il nostro ristorante. Qui sotto troverai il riepilogo della tua prenotazione
+			e un codice QR da mostrare al servizio accoglienza quando arriverai al locale. Speriamo di farti vivere un'esperienza
+			davvero unica. A presto!
+		</p>
+		<div class="firme">
+			<span>Giuseppe Abbagnale</span>
+			<!--  <span>Hiryana Ruta</span>-->
+		</div>
+		
+	</div>
+	
+	<div class="riepilogo-prenotazione">
+		<img th:src="@{${prenotazione.percorsoCodice}}" alt="QRcode">
+		<span th:text="'Prenotazione del ' + ${#temporals.format(prenotazione.data, 'dd-MM-yyyy')} + ' ' + ${prenotazione.ora} "></span>
+		
+		<h2>Prodotti ordinati: </h2>
+		<div class="prodotti-ordinati">
+			<ul>
+					<li th:each="p : ${prenotazione.pietanze}">
+						<img th:src="@{${p.percorsoImmagine}}">
+						<span th:text=${p.nome}></span>
+					</li>
+				</ul>
+		</div>
+		
+		
+	</div>
+	
+</section>
+
+	
+<div th:insert="footer"></div>

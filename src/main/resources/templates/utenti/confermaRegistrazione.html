@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a id="logo-home" th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+    
+
+	<!-- MESSAGE SECTION -->
+	
+<section class="conferma-registrazione">
+	<div class="conferma-registrazione">
+		<h1 th:text = "'Ciao, ' + ${utenteConfermato.nome} + ' ' + ${utenteConfermato.cognome}"></h1>
+		<p>
+			A breve riceverai la conferma di registrazione dal nostro staff. Nel frattempo, prova a dare un'occhiata al nostro menu,
+			perché avrai la possibilità di prenotare un tavolo presso il nostro ristorante o una comoda cena da ritirare e gustare con
+			chi vuoi. A presto!
+		</p>
+		<div class="conferma-registrazione-btn-wrapper">
+			<div class="conferma-registrazione-btn  form-control grow">
+				<a th:href="@{/}">HOME</a>
+			</div>
+			<div class="conferma-registrazione-btn form-control grow">
+				<a href="">MENU</a>
+			</div>
+		</div>
+	</div>
+</section>
+	
+<div th:insert="footer"></div>

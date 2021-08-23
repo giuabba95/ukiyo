@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/prenotazionestyle.css}">
+    
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+	<section class="utenti mb-5">
+		<div class="container">
+			<h1>PRENOTAZIONI</h1>
+			<div class="row">
+				<div class="col-12">
+					<a class="open-filter">Filtra prenotazioni:</a>
+				</div>
+				<div class="col-12 mt-3 filtri-ricerca">
+					<form class="row" method="post" th:action="@{/prenotazioni/filtra-prenotazioni}">
+						<div class="col-lg-3 col-sm-12">
+							<label for="nome">Filtra per nome: </label>
+							<input name="nome" type="text" class="form-control" placeholder="Nome">
+						</div>
+						<div class="col-lg-3 col-sm-12">
+							<label for="cognome">Filtra cognome: </label>
+							<input name="cognome" type="text" class="form-control" placeholder="Cognome">
+						</div>
+						<div class="col-lg-3 col-sm-12">
+							<label for="ruolo">Filtra per tipologia: </label>
+							<select name="tipologiaPrenotazione" class="form-control">
+								<option selected value="0">-</option>
+								<option value="Asporto">Asporto</option>
+								<option value="Tavolo">Tavolo</option>
+							</select>	
+						</div>
+						<div class="col-lg-3 col-sm-12 mt-2 filtri-bottoni">
+								<div class="row">
+									<div class="col-3">
+										<button class="icon-btn grow form-control" name="btn-filtro" type="submit" value="cerca">CERCA</button>
+									</div>
+									<div class="col-9">
+										<a th:href="@{/prenotazioni/recupera-tutte}"class="icon-btn grow form-control" name="btn-filtro" value="visualizza-tutti">VISUALIZZA TUTTI</a>
+									</div>
+								</div>
+							
+						</div>
+					
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 mt-3 no-users-found" th:if="${prenotazioni.size} eq 0">
+					<h3>NESSUNA PRENOTAZIONE TROVATA</h3>
+				</div>
+				
+				<div class="col-12 mt-3 utenti-box" th:if="${prenotazioni.size} > 0">
+					<div class="row dettagli-utenti">
+						<div class="col-3 nome-colonna">
+							<h4 class="nome-colonna">Nome</h4>
+						</div>
+						<div class="col-3">
+							<h4 class="nome-colonna">Data e ora</h4>
+						</div>
+						<div class="col-3">
+							<h4 class="nome-colonna">Numero di persone</h4>
+						</div>
+						<div class="col-3">
+							<h4 class="nome-colonna">Tipologia di prenotazione</h4>
+						</div>
+					</div>
+					<div th:each="p : ${prenotazioni}" class="row dettagli-utenti">
+					
+						
+							<div class="col-3">
+								<h6 th:text="${p.id}"></h6>
+								<h5 th:text="${p.utente.nome} + ' ' + ${p.utente.cognome}"></h5>
+							</div>
+							<div class="col-3">
+							<span th:text="${#temporals.format(p.data, 'dd-MM-yyyy')}"></span>
+							<span th:text="${p.ora}"></span>
+							</div>
+							<div class="col-3">
+								<span th:text="${p.numeroOspiti}"></span>
+							</div>
+							
+							<div class="col-3">
+								<div class="sezione-ruoli bottoni">
+									<span id="ruolo tipologia" th:text="${p.tipologiaPrenotazione}" th:value="${p.tipologiaPrenotazione}"></span>
+									<a th:href="@{/prenotazioni/dettagli-prenotazione(id=${p.id})}" class=" grow "><i class="fas fa-search"></i></a>
+									<a th:href="@{/prenotazioni/modificaForm(id=${p.id})}" class="grow "><i class="fas fa-edit"></i></a>
+									<a sec:authorize="hasRole('ADMIN')" class="elimina-prenotazione " id="elimina-prenotazione-btn">ELIMINA</a>
+								</div>
+							</div>
+						
+						
+						
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div th:insert="footer"></div>

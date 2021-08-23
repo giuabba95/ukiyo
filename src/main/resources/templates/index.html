@@ -1,0 +1,114 @@
+<div th:insert="header"></div>
+<div class="main">
+	<section class="box-foto">
+		<blockquote id="quote">
+			"Benvenuti nel nostro ristorante"<span></span>
+		</blockquote>
+		<video autoplay muted loop id="salmon"
+			th:src="@{/resources/video-nigiri.mp4}"></video>
+		<video autoplay muted loop id="shrimps"
+			th:src="@{/resources/video-uramaki2.mp4}"></video>
+		<div id="box"></div>
+	</section>
+
+
+	<section class="presentation">
+		<div class="row mt-5 presentation-row">
+			<div class="col-lg-3 col-sm-12 presentation-title">
+				<span>浮</span> <span>世</span>
+			</div>
+			<div class="col-lg-9 col-sm-12 presentation-description">
+				<p id="trigger2">Riesci a ricordare un tempo in cui hai vissuto
+					il momento, tanto da sentirti completamente distaccato dai fastidi
+					della vita? Da sentirti così spensierato, ispirato, come se il
+					mondo stesse fluttuando? Ukiyo è la parola per descrivere questa
+					sensazione, potendo essere tradotta in "il mondo fluttuante".</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="call-to-action">
+		<div class="row">
+			<div class="titolo col-12">
+				<h3>Accedi per riservare un tavolo o prenotare il tuo asporto</h3>
+			</div>
+			<div class="orari col-12">
+				<p>
+					Pranzo 12:30 - 14:30 / <br> Cena 19:30 - 22:30
+				</p>
+			</div>
+			<div class="btn col-12">
+				<a th:href="@{/prenotazioni/prenotaTavolo-form}">PRENOTA TAVOLO</a>
+				<a>PRENOTA ASPORTO</a>
+			</div>
+		</div>
+	</div>
+
+	<section class="composition">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 composition-left">
+					<div class="composition-images">
+						<img th:src="@{/resources/nigiri-composition/shrimp.png}" alt="">
+						<img th:src="@{/resources/nigiri-composition/salmon.png}" alt="">
+						<img th:src="@{/resources/nigiri-composition/eel.png}" alt="">
+					</div>
+				</div>
+				<div class="col-6 composition-desc">
+					<div>
+						<div id="quote2">
+							<!--  <i>"Il sushi è la passione più grande condivisa con l'amore della mia vita e a lei è dedicato
+                            ogni mio singolo passo."
+                            	
+                            </i>
+                            -->
+							<i> "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna
+								aliqua. </i>
+							<div class="firme">
+								<span>Giuseppe Abbagnale</span>
+							</div>
+							<span class="bar"></span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<div class="horizontal-carousel mt-2 mb-2">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-3 col-sm-6 horizontal-carousel-img">
+					<img th:src=@{/resources/yellow-uramaki.jpg} alt="">
+				</div>
+				<div class="col-lg-3 col-sm-6 horizontal-carousel-img">
+					<img th:src="@{/resources/blue-nigiri.jpg}" alt="">
+					<div class="horizontal-carousel-i">
+						<i> "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna
+							aliqua. </i> <span class="bar"></span>
+					</div>
+
+
+				</div>
+				<div class="col-lg-3 col-sm-6 horizontal-carousel-img">
+					<img th:src="@{/resources/orange-uramaki.jpg}" alt="">
+				</div>
+				<div class="col-lg-3 col-sm-6 horizontal-carousel-img">
+					<div class="horizontal-carousel-i">
+						<span class="bar"></span> <i> "Lorem ipsum dolor sit amet,
+							consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. </i> <img
+							th:src="@{/resources/sushi-mix.jpg}" alt="">
+					</div>
+
+				</div>
+			</div>
+			</div>
+		</div>
+</div>
+
+	<div th:insert="footer"></div>

@@ -1,0 +1,30 @@
+<div class="menu">
+	<div th:insert="header"></div>
+</div>
+
+<section class="pietanza">
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-lg-4 col-sm-5 immagine-box">
+				<img th:src="@{${pietanza.percorsoImmagine}}">
+			</div>
+			<div class="col-lg-8 col-sm-7">
+			<div class="dettagli-pietanza">
+				<h1 th:text="${pietanza.nome}"></h1>
+				<span th:text="${pietanza.categoria.nome}"></span>
+				<p th:text="${pietanza.descrizione}"></p>
+				<div class="prezzo-box">
+						<span th:text="${pietanza.prezzo}" class="prezzo"></span>
+						<span>€</span>
+				</div>
+			</div>
+			</div>
+		</div>
+	
+	</div>
+</section>
+
+
+<div th:insert="footer"></div>
+		
+		

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/prenotazionestyle.css}">
+    <link rel="stylesheet" th:href="@{/css/pietanzastyle.css}">
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+
+    
+    <section class="form">
+    <div class="container">
+    	<h1>Scegli giorno e ora di ritiro del tuo ordine: </h1>
+		<form name="prenotazione__form" id="form"
+			th:action="@{/prenotazioni/prenotaAsporto}" method="post"
+			th:object="${asporto}">
+
+			<div class="form-group row">
+				<label for="inputDate" class="col-2 col-form-label">Giorno</label>
+				<div class='input-group date col-10' id='datetimepicker3'>
+					<input type='date' class="form-control calendario" id="data"
+						placeholder="gg/mm/aaaa" name="data" th:field="*{data}"
+						style="width: 200px;" />
+					<select name="ora" th:field="*{ora}">
+						<option th:each="o : ${orari}"  th:text="${o}" th:value="${o}">
+					</select> 
+					<label class="data-error error" th:text="${errore}"></label>
+
+				</div>
+
+			</div>
+
+		
+
+				<div class="form-group row">
+					<label for="textArea" class="col-sm-2 col-form-label">Messaggio</label>
+					<div class='input-group date col-sm-10' id='datetimepicker3'>
+						<textarea class="form-control" id="exampleFormControlTextarea1"
+							rows="3" th:field="*{messaggio}"></textarea>
+					</div>
+				</div>
+				
+				<input type="hidden" name="utente" th:value="${utente.id}">
+<!-- 				
+				<div class="row mt-5">
+				<div class="col-3">
+					<ul class="categorie">
+						<li th:each="c : ${categorie}"><a
+							th:href="@{/pietanze/recupera(id=${c.id})}"> <span
+								th:text="${c.nome}"></span>
+						</a></li>
+					</ul>
+				</div>
+				<div class="col-6">
+				<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6" th:each="p : ${menu}">
+							<div class="prodotto">
+								
+								<div class="immagine">
+									<img th:src="@{${p.percorsoImmagine}}">
+								</div>
+							<span th:text="${p.nome}"></span> 
+							<div>
+									<span class="numPezzi"
+									th:text="${p.numeroPezzi} + ' pz '"></span> 
+									<span>- €</span>
+									<span class="prezzo" th:text="${p.prezzo}"></span>
+								</div>
+								<div>
+									<input type="checkbox" th:value="${p.id}">
+								</div>
+				</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3 carrello" style="border: 1px solid black; position: sticky;"></div>
+				</div>
+-->
+			
+			
+			<div class="icon-btn grow form-control">
+					<button type="submit">VAI AL MENU</button>
+				</div>
+			
+	</form>
+	
+	</div>
+	</section>
+	
+<div th:insert="footer"></div>

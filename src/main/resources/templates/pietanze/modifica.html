@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/pietanzastyle.css}">
+    
+    
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+
+
+    <!-- NAVBAR -->
+    
+<div class="aggiungi-categoria">
+    	<div class="popup">
+    		<h1>Aggiungi categoria</h1>
+			<a class="esc"><i class="fas fa-times"></i></a>
+				<form id="form-categoria" th:action="@{/categorie/aggiungi}" method="post">
+					<div class="nome">
+						<label for="nome">Nome*</label>
+	                	<input name="nome-categoria" type="text" class="form-control mb-2" placeholder="Nome">
+					</div>
+	          		<div class="descrizione">
+	          			<label for="descrizione">Descrizione</label>
+	          			<textarea name="descrizione-categoria" class="form-control mb-2"   rows="5"></textarea>
+	          		</div>
+	           		<div class="icon-btn grow">
+						<button type="submit">AGGIUNGI</button>
+					</div>
+	    		 </form>
+			</div>
+			
+</div>
+    	
+
+
+    
+	<section class="form aggiungi">
+		<h1> AGGIUNGI PRODOTTO AL MENU</h1>
+		
+	    <form th:action="@{/pietanze/aggiungi}" id="form" class="form__registrazione mt-5" th:object="${pietanza}" method="post" enctype="multipart/form-data">
+	       		<div class="col-12 anteprima-foto-box">
+	       			<img id="anteprima-foto-pietanza" alt="preview">
+	       		</div>
+	            <div class="form-row">
+	              <div class="col-lg-10 col-md-6 col-sm-12 ">
+	                  <label for="name">Nome*</label>
+	                <input name="name" type="text" class="form-control mb-2" placeholder="Nome" th:field="*{nome}">
+	              </div>
+	              <div class="col-lg-2 col-md-6 col-sm-12 mb-2">
+	                <label for="prezzo">Prezzo*</label>
+	                <input name="lastname" type="number" min="1" step="0.01" class="form-control mb-2" placeholder="Prezzo" th:field="*{prezzo}">
+	              </div>
+	            </div>
+	            <div class="form-row">
+	                <div class="col-12 mb-2">
+	                    <label for="email">Descrizione*</label>
+	                  <textarea name="descrizione" class="form-control mb-2"  th:field="*{descrizione}" rows="5"></textarea>
+	                </div>
+	            </div>
+	            
+	             <div class="form-row">
+	                
+	                <div class='col-12 mb-2'>
+	                    <label for="categoria" class="inputPassword">Categoria*</label>
+	                  <select class="form-control" th:field="*{categoria}">
+	                  	<option th:each="c : ${categorie}" th:value="${c.id}" th:text="${c.nome}"></option>
+	                  </select>
+	                  <span id="aggiungi-categoria-link"> Aggiungi categoria</span>
+	                  
+	               </div> 
+	                    
+	            </div>
+	            
+	            <div class="form-row">
+				<div class="col-12 mb-2">
+
+					<label for="Disponibilita">Disponibilita*</label>
+					<div>
+						<label for="Disponibile">Disponibile</label> <input
+							name="disponibilita" type="radio" value="true"
+							th:field="*{disponibile}">
+					</div>
+					<div>
+						<label for="Disponibile">Non disponibile</label> <input
+							name="disponibilita" type="radio" value="false"
+							th:field="*{disponibile}">
+					</div>
+
+
+				</div>
+			</div>
+			
+			<div class="form-row row">
+                
+                <div class='col-6 mb-2'>
+                    <label for="inputPassword">Foto</label>
+                  <input  type='file' name="immagine"  placeholder="Foto" id="foto-pietanza"/>
+               </div>    
+               <div class="col-6">
+               <!--   <span>Anteprima: </span>
+                   <div class="foto-preview" style="border: 1px solid black; width: max-content; float:right;">
+                   
+	                  	 <img alt="preview" id="anteprima-foto-profilo" th:src="@{/immagini-caricate/utenti/omino.jpg}" style="max-width: 200px; max-height: 200px;">
+	                  </div>  
+	              -->
+	                 
+               </div>    
+            </div>
+	            
+	             
+	           
+	            <div class="form-row mt-5">
+	
+				<div class="icon-btn grow">
+					<button type="submit">AGGIUNGI</button>
+				</div>
+			</div>
+	
+	          
+	    </form>
+	</section>
+	
+	
+	<div th:insert="footer"></div>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukiyo</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/signupstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/prenotazionestyle.css}">
+    
+    
+</head>
+<body>
+
+<!-- INTRO WITHOUT ANIMATION -->
+
+	<div class="menu">
+		<div class="menu-left"></div>
+		<a id="logo-home" th:href="@{/}">
+			<div class="menu-title">
+	            <h1 id="title-h1">浮世</h1>
+	            <span id="title-blockquote">Ukiyo - Sushi Restaurant</span>
+       		 </div>
+      	</a>
+        <div class="menu-right">
+        	<div id="menu-icon"><i class="fas fa-bars fa-lg"></i></div>
+        </div>
+         <div class="menu-navbar">
+        	<div th:insert="navbar"></div>
+        </div>
+	</div>
+
+    
+
+	<!-- MESSAGE SECTION -->
+	
+<section class="conferma-registrazione dettagli-singola-prenotazione">
+	
+	<div class="riepilogo-prenotazione singola">
+		<h1>La tua prenotazione: </h1>
+		<img th:src="@{${prenotazione.percorsoCodice}}" alt="QRcode">
+		<div class="data-orario riepilogo">
+			<div>
+				<label for="tipologia">Tipologia prenotazione: </label>
+				<span class="tipologia-prenotazione" th:text=" ${prenotazione.tipologiaPrenotazione}"></span>
+			</div>
+			<div>
+				<label for="nome">Nome: </label>
+				<span class="nome" th:text=" ${prenotazione.utente.nome} + ' ' + ${prenotazione.utente.cognome}"></span>
+			</div>
+			<div>
+				<label for="orario">Giorno e ora: </label>
+				<div>
+					<span class="data-prenotazione" th:text="${#temporals.format(prenotazione.data, 'dd-MM-yyyy')}">${p.data}</span>
+					<span> - </span>
+					<span th:text="${prenotazione.ora}"></span>
+				</div>
+			</div>
+			
+			<div>
+				<label for="messaggio">Messaggio: </label>
+				<span class="messaggio" th:text="${prenotazione.messaggio}"></span>
+			</div>
+			<div class="prodotti-ordinati">
+				<label for="prodotti">Prodotti ordinati: </label>
+				
+				<ul>
+					<li th:each="p : ${prenotazione.pietanze}">
+						<img th:src="@{${p.percorsoImmagine}}">
+						<span th:text=${p.nome}></span>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		<div class="bottoni">
+			<a class="modifica-prenotazione modifica grow" th:if="${utenteInSessione.id} eq ${prenotazione.utente.id}" th:href="@{/prenotazioni/modifica-tavolo-form(id=${prenotazione.id})}"><span>MODIFICA</span></a>
+			<a class="elimina-prenotazione elimina  grow" id="elimina-prenotazione-btn" th:href="@{/prenotazioni/conferma-eliminazione(id=${prenotazione.id})}"><span>ELIMINA</span></a>
+		</div>
+	</div>
+	
+	
+</section>
+	
+<div th:insert="footer"></div>
